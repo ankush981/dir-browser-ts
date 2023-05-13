@@ -30,8 +30,7 @@ File operations:
 
 Searching:
 
-- Search for a file or folder by name (exact match or pattern matching)
-- Search for files based on file content
+- Search for a file or folder by name (exact match or substring matching)
 
 Sorting:
 

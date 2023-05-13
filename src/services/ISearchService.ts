@@ -6,10 +6,4 @@ export interface ISearchService {
         nameQuery: string,
         isExactMatch: boolean
     ): Promise<FileInfo[]>;
-
-    searchByContent(
-        startPath: string,
-        contentQuery: string,
-        fileExtensions?: string[]
-    ): Promise<FileInfo[]>;
 }
