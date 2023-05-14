@@ -1,6 +1,7 @@
 import { ICommand } from './ICommand';
 import { ISearchService } from '../services/ISearchService';
 import { FileInfo } from '../types';
+import { config } from '../utils/config';
 
 export class SearchCommand implements ICommand {
     private searchService: ISearchService;
@@ -15,7 +16,7 @@ export class SearchCommand implements ICommand {
             return;
         }
 
-        const startPath = '.';
+        const startPath = config.defaultPath;
         const nameQuery = args[0];
         const isExactMatch = args.length > 1 && args[1] === '--exact';
 
@@ -26,7 +27,7 @@ export class SearchCommand implements ICommand {
                 isExactMatch
             );
             this.display(results);
-        } catch (error) {
+        } catch (error: any) {
             console.error(`Error: Failed to search for '${nameQuery}'.`, error);
         }
     }

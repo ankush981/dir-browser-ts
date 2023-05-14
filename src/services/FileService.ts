@@ -16,7 +16,7 @@ export class FileService implements IFileService {
                 })
             );
             return fileInfos;
-        } catch (error) {
+        } catch (error: any) {
             console.error(`Error reading directory: ${error.message}`);
             return [];
         }
@@ -27,7 +27,7 @@ export class FileService implements IFileService {
             const stats = await fsp.stat(filePath);
             const fileName = path.basename(filePath);
             return this.buildFileInfoFromStats(filePath, fileName, stats);
-        } catch (error) {
+        } catch (error: any) {
             console.error(`Error getting file info: ${error.message}`);
             throw error;
         }
@@ -36,7 +36,7 @@ export class FileService implements IFileService {
     async createFolder(folderPath: string): Promise<void> {
         try {
             await fsp.mkdir(folderPath);
-        } catch (error) {
+        } catch (error: any) {
             console.error(`Error creating folder: ${error.message}`);
             throw error;
         }
@@ -50,7 +50,7 @@ export class FileService implements IFileService {
             } else {
                 await fsp.unlink(targetPath);
             }
-        } catch (error) {
+        } catch (error: any) {
             console.error(`Error deleting path: ${error.message}`);
             throw error;
         }
@@ -59,7 +59,7 @@ export class FileService implements IFileService {
     async renamePath(oldPath: string, newPath: string): Promise<void> {
         try {
             await fsp.rename(oldPath, newPath);
-        } catch (error) {
+        } catch (error: any) {
             console.error(`Error renaming path: ${error.message}`);
             throw error;
         }

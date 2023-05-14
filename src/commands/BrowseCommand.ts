@@ -3,6 +3,7 @@ import { IFileService } from '../services/IFileService';
 import { ISearchService } from '../services/ISearchService';
 import { ISortService } from '../services/ISortService';
 import { FileInfo, SortOptions } from '../types';
+import { config } from '../utils/config';
 
 export class BrowseCommand implements ICommand {
     private fileService: IFileService;
@@ -20,8 +21,13 @@ export class BrowseCommand implements ICommand {
     }
 
     async execute(args: string[]): Promise<void> {
-        const startPath = args[0] || '.';
+        const startPath = args[0] || config.defaultPath;
         const sortBy = args[1] as SortOptions || SortOptions.NAME_ASC;
+
+        if (!config.validSortOptions.includes(sortBy)) {
+            console.error(`Error: Invalid sort option '${sortBy}'.`);
+            return;
+        }
 
         const files = await this.fileService.listDirectoryContents(startPath);
         const sortedFiles = this.sortService.sortFiles(files, sortBy);

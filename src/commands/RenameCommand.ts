@@ -19,7 +19,7 @@ export class RenameCommand implements ICommand {
         try {
             await this.fileService.renamePath(oldPath, newPath);
             console.log(`'${oldPath}' renamed to '${newPath}' successfully.`);
-        } catch (error) {
+        } catch (error: any) {
             console.error(
                 `Error: Failed to rename '${oldPath}' to '${newPath}'.`,
                 error

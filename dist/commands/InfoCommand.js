@@ -1,30 +1,25 @@
-import { ICommand } from './ICommand';
-import { IFileService } from '../services/IFileService';
-import { FileInfo } from '../types';
-
-export class InfoCommand implements ICommand {
-    private fileService: IFileService;
-
-    constructor(fileService: IFileService) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.InfoCommand = void 0;
+class InfoCommand {
+    constructor(fileService) {
         this.fileService = fileService;
     }
-
-    async execute(args: string[]): Promise<void> {
+    async execute(args) {
         if (args.length === 0) {
             console.error('Error: Missing file or folder name.');
             return;
         }
-
         const path = args[0];
         try {
             const fileInfo = await this.fileService.getFileInfo(path);
             this.display(fileInfo);
-        } catch (error: any) {
+        }
+        catch (error) {
             console.error(`Error: Failed to retrieve info for '${path}'.`, error);
         }
     }
-
-    private display(fileInfo: FileInfo): void {
+    display(fileInfo) {
         console.log('File Info:');
         console.log(`Name: ${fileInfo.name}`);
         console.log(`Path: ${fileInfo.fullPath}`);
@@ -33,3 +28,5 @@ export class InfoCommand implements ICommand {
         console.log(`Type: ${fileInfo.isDirectory ? 'Folder' : 'File'}`);
     }
 }
+exports.InfoCommand = InfoCommand;
+//# sourceMappingURL=InfoCommand.js.map

@@ -47,3 +47,21 @@ Help:
 Cross-platform support:
 
 - Ensure compatibility with different operating systems (e.g., Windows, macOS, and Linux)
+
+## Usage
+
+After `node run dist/index.js`, you can use commands as follows:
+
+```
+browse
+browse ./my-directory
+browse ./my-directory size-desc
+create-folder new-folder
+delete ./path/to/file-or-folder
+info ./path/to/file-or-folder
+rename ./old-path/to/file-or-folder ./new-path/to/file-or-folder
+search document
+search document --exact
+sort ./my-directory date-modified-asc
+sort ./my-directory name-asc
+```
