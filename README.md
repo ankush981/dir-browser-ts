@@ -8,8 +8,6 @@ This is a simple Finder/Explorer-style CLI app that allows you to browse and man
 - Learn OO design and SOLID principles
 - Learn unit testing
 
-I knew all these things were important part of engineering, and could never find anyone to teach me. So, with the help of ChatGPT, I decided to teach myself and level up!
-
 ## Capabilities
 
 Browse directories:
